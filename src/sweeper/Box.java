@@ -1,5 +1,6 @@
 package sweeper;
 
+
 /**
  * Created by go on 18.03.2018.
  */
@@ -20,4 +21,6 @@ public enum Box {
     FLAGED,
     BOMBED,
     NOBOMB;
+
+    public Object mImage;
 }
