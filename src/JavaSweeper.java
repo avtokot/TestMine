@@ -1,4 +1,5 @@
 import sweeper.Box;
+import sweeper.Coord;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,9 +29,10 @@ public class JavaSweeper extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-
-                for (Box box : Box.values())
-                    g.drawImage((Image) box.mImage, box.ordinal() * IMAGE_SIZE, 0, this);
+                for (Box box : Box.values()) {
+                    Coord coord = new Coord(box.ordinal(), 0);
+                    g.drawImage((Image) box.mImage, coord.x * IMAGE_SIZE, coord.y * IMAGE_SIZE, this);
+                }
 
             }
         };
