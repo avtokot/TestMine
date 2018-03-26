@@ -10,8 +10,8 @@ public class JavaSweeper extends JFrame {
 
     private JPanel mJPanel;
     private static final int IMAGE_SIZE = 50;
-    private static final int COLS = 15;
-    private static final int ROWS = 1;
+    private static final int COLS = 9;
+    private static final int ROWS = 9;
 
 
     public static void main(String[] args) {
@@ -31,9 +31,8 @@ public class JavaSweeper extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                for (Box box : Box.values()) {
-                    Coord coord = new Coord(box.ordinal(), 0);
-                    g.drawImage((Image) box.mImage, coord.x * IMAGE_SIZE, coord.y * IMAGE_SIZE, this);
+                for (Coord coord : Ranges.getAllCoords()) {
+                    g.drawImage((Image) Box.FLAGED.mImage, coord.x * IMAGE_SIZE, coord.y * IMAGE_SIZE, this);
                 }
 
             }
@@ -46,9 +45,9 @@ public class JavaSweeper extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Java Sweeper");
         setLocationRelativeTo(null);
-        setVisible(true);
         setResizable(false); // запрет на изменения размеров окна
         pack();
+        setVisible(true);
     }
 
     private void setImages() {
