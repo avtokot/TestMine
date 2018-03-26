@@ -32,7 +32,8 @@ public class JavaSweeper extends JFrame {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 for (Coord coord : Ranges.getAllCoords()) {
-                    g.drawImage((Image) Box.FLAGED.mImage, coord.x * IMAGE_SIZE, coord.y * IMAGE_SIZE, this);
+                    g.drawImage((Image) Box.values()[(coord.x + coord.y) % Box.values().length].mImage,
+                            coord.x * IMAGE_SIZE, coord.y * IMAGE_SIZE, this);
                 }
 
             }
@@ -53,6 +54,7 @@ public class JavaSweeper extends JFrame {
     private void setImages() {
         for (Box box : Box.values())
             box.mImage = getImage(box.name().toLowerCase());
+        setIconImage(getImage("icon")); // установка заглавной картинки
     }
 
     private Image getImage(String name) {
