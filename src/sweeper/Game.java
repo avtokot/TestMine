@@ -8,11 +8,18 @@ public class Game {
         Ranges.setSize(new Coord(cols, rows));
     }
 
+    /**
+     * метод запуска игры
+     */
     public void start() {
         bombMap = new Matrix(Box.ZERO);
+        bombMap.set(new Coord(0,0), Box.BOMB);
+        bombMap.set(new Coord(0,1), Box.NUM1);
+        bombMap.set(new Coord(1,0), Box.NUM1);
+        bombMap.set(new Coord(1,1), Box.NUM1);
     }
 
     public Box getBox(Coord coord) {
-        return bombMap.matrix[coord.x] [coord.y];
+        return bombMap.get(coord);
     }
 }

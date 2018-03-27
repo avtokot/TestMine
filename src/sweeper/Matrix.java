@@ -1,7 +1,7 @@
 package sweeper;
 
 public class Matrix {
-    Box[][] matrix;
+    private Box[][] matrix;
 
     public Matrix(Box box) {
         matrix = new Box[Ranges.getSize().x][Ranges.getSize().y];
@@ -9,4 +9,18 @@ public class Matrix {
             matrix[coord.x][coord.y] = box;
         }
     }
+
+    public Box get(Coord coord) {
+        if (Ranges.inRange(coord)) {
+            return matrix[coord.x][coord.y];
+        }
+        return null;
+    }
+
+    public void set(Coord coord, Box box) {
+        if (Ranges.inRange(coord)) {
+            matrix[coord.x][coord.y] = box;
+        }
+    }
+
 }
