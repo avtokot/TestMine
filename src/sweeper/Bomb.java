@@ -22,8 +22,14 @@ class Bomb {
     private void placeBomb() {
         Coord coordBomb = Ranges.getRandomCoord(); // случайное расположение бомб
         bombMap.set(coordBomb, Box.BOMB);
+        incNumbersAroundBomb(coordBomb);
+    }
+
+    private void incNumbersAroundBomb(Coord coordBomb) {
         for (Coord around : Ranges.getAroundCoord(coordBomb)) {
-            bombMap.set(around, Box.NUM1);
+            if (Box.BOMB != get(around)) {
+                bombMap.set(around, bombMap.get(around).nextNumberBox());
+            }
         }
     }
 

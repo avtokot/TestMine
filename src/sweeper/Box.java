@@ -23,4 +23,8 @@ public enum Box {
     NOBOMB;
 
     public Object mImage;
+
+    public Box nextNumberBox() {
+        return Box.values()[this.ordinal() + 1];
+    } // возвращает следующую цифру вокруг бомбы
 }

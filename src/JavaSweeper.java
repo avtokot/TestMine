@@ -59,7 +59,7 @@ public class JavaSweeper extends JFrame {
         for (Box box : Box.values())
             box.mImage = getImage(box.name().toLowerCase());
         setIconImage(getImage("icon")); // установка заглавной картинки
-    }
+    } // main image
 
     private Image getImage(String name) {
         String filename = "img/" + name + ".png";
