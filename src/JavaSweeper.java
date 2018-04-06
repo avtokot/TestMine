@@ -42,6 +42,11 @@ public class JavaSweeper extends JFrame {
 
             }
         };
+
+        // временная показуха
+        game.pressLeftButton(new Coord(4, 4));
+        game.pressRightButton(new Coord(7, 7));
+
         mJPanel.setPreferredSize(new Dimension(Ranges.getSize().x * IMAGE_SIZE, Ranges.getSize().y * IMAGE_SIZE));
         add(mJPanel);
     }
