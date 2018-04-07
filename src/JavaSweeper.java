@@ -13,6 +13,7 @@ public class JavaSweeper extends JFrame {
 
     private Game game;
     private JPanel mJPanel;
+    private JLabel mJlabel;
     private static final int COLS = 9;
     private static final int ROWS = 9;
     private static final int BOMBS = 10;
@@ -29,7 +30,15 @@ public class JavaSweeper extends JFrame {
         game.start();
         setImages();
         initPanel();
+        initLabel();
         initFrame();
+    }
+
+    private void initLabel() {
+        mJlabel = new JLabel("Welcome!");
+        Font font = new Font("Tahoma", Font.BOLD, 20);
+        mJlabel.setFont(font);
+        add(mJlabel, BorderLayout.SOUTH);
     }
 
     private void initPanel() {
