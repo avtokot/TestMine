@@ -36,9 +36,11 @@ public class Game {
 
     public void pressLeftButton(Coord coord) {
         flag.setOpenedToBox(coord);
+        state = GameState.BOMBED;
     }
 
     public void pressRightButton(Coord coord) {
         flag.toggleFlagedToBox(coord);
+        state = GameState.WINNER;
     }
 }
