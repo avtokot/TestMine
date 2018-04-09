@@ -36,19 +36,29 @@ public class Game {
 
     public void pressLeftButton(Coord coord) {
         openBox(coord);
+        checkWinner();
+    }
+
+    private void checkWinner() {
+        if (GameState.PLAYED == state) {
+            if (flag.getTotalClosed() == bomb.getTotalBombs()) {
+                state = GameState.WINNER;
+                flag.setFlaggedToLastClosedBoxes();
+            }
+        }
     }
 
     public int getTotalBombs() {
         return bomb.getTotalBombs();
     }
 
-    public int getTotalFlaged() {
-        return flag.getTotalFlaged();
+    public int getTotalFlagged() {
+        return flag.getTotalFlagged();
     }
 
     private void openBox(Coord coord) {
         switch (flag.get(coord)) {
-            case FLAGED:
+            case FLAGGED:
                 break;
             case OPENED:
                 break;
@@ -74,6 +84,6 @@ public class Game {
     }
 
     public void pressRightButton(Coord coord) {
-        flag.toggleFlagedToBox(coord);
+        flag.toggleFlaggedToBox(coord);
     }
 }

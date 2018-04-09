@@ -18,7 +18,7 @@ public enum Box {
 
     OPENED,
     CLOSED,
-    FLAGED,
+    FLAGGED,
     BOMBED,
     NOBOMB;
 

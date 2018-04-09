@@ -22,8 +22,8 @@ public class Flag {
         totalClosed--;
     }
 
-    public void setFlagedToBox(Coord coord) {
-        flagMap.set(coord, Box.FLAGED);
+    public void setFlaggedToBox(Coord coord) {
+        flagMap.set(coord, Box.FLAGGED);
         totalFlaged++;
     }
 
@@ -33,22 +33,30 @@ public class Flag {
         totalFlaged--;
     }
 
-    public void toggleFlagedToBox(Coord coord) {
+    public void toggleFlaggedToBox(Coord coord) {
         switch (flagMap.get(coord)) {
-            case FLAGED:
+            case FLAGGED:
                 setClosedToBox(coord);
                 break;
             case CLOSED:
-                setFlagedToBox(coord);
+                setFlaggedToBox(coord);
                 break;
         }
     }
 
-    int getTotalFlaged() {
+    int getTotalFlagged() {
         return totalFlaged;
     }
 
     int getTotalClosed() {
         return totalClosed;
+    }
+
+    public void setFlaggedToLastClosedBoxes() {
+        for (Coord coord : Ranges.getAllCoords()) {
+            if (Box.CLOSED == flagMap.get(coord)) {
+                setFlaggedToBox(coord);
+            }
+        }
     }
 }
