@@ -16,7 +16,7 @@ public class JavaSweeper extends JFrame {
     private JLabel mJlabel;
     private static final int COLS = 9;
     private static final int ROWS = 9;
-    private static final int BOMBS = 3;
+    private static final int BOMBS = 10;
     private static final int IMAGE_SIZE = 50;
 
 

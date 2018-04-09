@@ -77,6 +77,7 @@ public class Game {
             case FLAGGED:
                 break;
             case OPENED:
+                setOpenedToClosedBoxesAroundNumber(coord);
                 break;
             case CLOSED:
                 switch (bomb.get(coord)) {
@@ -90,6 +91,18 @@ public class Game {
                         flag.setOpenedToBox(coord); // открывает клетки вокруг цифр
                         break;
                 }
+        }
+    }
+
+    private void setOpenedToClosedBoxesAroundNumber(Coord coord) {
+        if (Box.BOMB != bomb.get(coord)) {
+            if (bomb.get(coord).getNumber() == flag.getCountOfFlaggedBoxesAround(coord)) {
+                for (Coord around : Ranges.getAroundCoord(coord)) {
+                    if (Box.CLOSED == flag.get(around)) {
+                        openBox(around);
+                    }
+                }
+            }
         }
     }
 

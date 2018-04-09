@@ -27,4 +27,13 @@ public enum Box {
     public Box nextNumberBox() {
         return Box.values()[this.ordinal() + 1];
     } // возвращает следующую цифру вокруг бомбы
+
+    int getNumber() {
+        int nr = ordinal();
+        if (nr >= NUM1.ordinal() && nr <= NUM8.ordinal()) {
+
+            return ordinal();
+        }
+        return -1;
+    }
 }
