@@ -16,7 +16,7 @@ public class JavaSweeper extends JFrame {
     private JLabel mJlabel;
     private static final int COLS = 9;
     private static final int ROWS = 9;
-    private static final int BOMBS = 2;
+    private static final int BOMBS = 3;
     private static final int IMAGE_SIZE = 50;
 
 
@@ -36,7 +36,7 @@ public class JavaSweeper extends JFrame {
 
     private void initLabel() {
         mJlabel = new JLabel(getMessage());
-        Font font = new Font("Tahoma", Font.BOLD, 20);
+        Font font = new Font("Tahoma", Font.BOLD, 18);
         mJlabel.setFont(font);
         add(mJlabel, BorderLayout.SOUTH);
     }
