@@ -3,12 +3,12 @@ package sweeper;
 public class Flag {
 
     private Matrix flagMap;
-    private int totalFlaged;
+    private int totalFlagged;
     private int totalClosed;
 
     public void start() {
         flagMap = new Matrix(Box.CLOSED);
-        totalFlaged = 0;
+        totalFlagged = 0;
         totalClosed = Ranges.getSquare();
     }
 
@@ -24,13 +24,13 @@ public class Flag {
 
     public void setFlaggedToBox(Coord coord) {
         flagMap.set(coord, Box.FLAGGED);
-        totalFlaged++;
+        totalFlagged++;
     }
 
 
     private void setClosedToBox(Coord coord) {
         flagMap.set(coord, Box.CLOSED);
-        totalFlaged--;
+        totalFlagged--;
     }
 
     public void toggleFlaggedToBox(Coord coord) {
@@ -45,7 +45,7 @@ public class Flag {
     }
 
     int getTotalFlagged() {
-        return totalFlaged;
+        return totalFlagged;
     }
 
     int getTotalClosed() {
