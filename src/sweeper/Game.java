@@ -35,8 +35,24 @@ public class Game {
     }
 
     public void pressLeftButton(Coord coord) {
+        if (isGameOver()) return;
         openBox(coord);
         checkWinner();
+    }
+
+    public void pressRightButton(Coord coord) {
+        if (isGameOver()) return;
+        flag.toggleFlaggedToBox(coord);
+
+    }
+
+    private boolean isGameOver() {
+        if (GameState.PLAYED != state) {
+            start();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private void checkWinner() {
@@ -68,6 +84,7 @@ public class Game {
                         openBoxesAroundZero(coord); // открывает пустые клетки
                         break;
                     case BOMB:
+                        openBombs(coord);
                         break;
                     default:
                         flag.setOpenedToBox(coord); // открывает клетки вокруг цифр
@@ -76,14 +93,15 @@ public class Game {
         }
     }
 
+    private void openBombs(Coord bombedCoords) {
+        flag.setBombedToBox(bombedCoords);
+        state = GameState.BOMBED;
+    }
+
     private void openBoxesAroundZero(Coord coord) {
         flag.setOpenedToBox(coord);
         for (Coord around : Ranges.getAroundCoord(coord)) {
             openBox(around);
         }
-    }
-
-    public void pressRightButton(Coord coord) {
-        flag.toggleFlaggedToBox(coord);
     }
 }
