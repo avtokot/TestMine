@@ -63,4 +63,16 @@ public class Flag {
     void setBombedToBox(Coord coord) {
         flagMap.set(coord, Box.BOMBED);
     }
+
+    void setOpenedToClosedBox(Coord coord) {
+        if (Box.CLOSED == flagMap.get(coord)) {
+            flagMap.set(coord, Box.OPENED);
+        }
+    }
+
+    void setNobombToFlaggedBox(Coord coord) {
+        if (Box.FLAGGED == flagMap.get(coord)) {
+            flagMap.set(coord, Box.NOBOMB);
+        }
+    }
 }
