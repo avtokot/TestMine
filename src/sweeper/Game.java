@@ -35,8 +35,26 @@ public class Game {
     }
 
     public void pressLeftButton(Coord coord) {
-        flag.setOpenedToBox(coord);
-        state = GameState.BOMBED;
+        openBox(coord);
+    }
+
+    private void openBox(Coord coord) {
+        switch (flag.get(coord)) {
+            case FLAGED:
+                break;
+            case OPENED:
+                break;
+            case CLOSED:
+                switch (bomb.get(coord)) {
+                    case ZERO:
+                        break;
+                    case BOMB:
+                        break;
+                    default:
+                        flag.setOpenedToBox(coord);
+                        break;
+                }
+        }
     }
 
     public void pressRightButton(Coord coord) {
