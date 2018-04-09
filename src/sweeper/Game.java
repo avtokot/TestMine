@@ -38,6 +38,14 @@ public class Game {
         openBox(coord);
     }
 
+    public int getTotalBombs() {
+        return bomb.getTotalBombs();
+    }
+
+    public int getTotalFlaged() {
+        return flag.getTotalFlaged();
+    }
+
     private void openBox(Coord coord) {
         switch (flag.get(coord)) {
             case FLAGED:
@@ -67,6 +75,5 @@ public class Game {
 
     public void pressRightButton(Coord coord) {
         flag.toggleFlagedToBox(coord);
-        state = GameState.WINNER;
     }
 }
