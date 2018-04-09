@@ -47,13 +47,21 @@ public class Game {
             case CLOSED:
                 switch (bomb.get(coord)) {
                     case ZERO:
+                        openBoxesAroundZero(coord); // открывает пустые клетки
                         break;
                     case BOMB:
                         break;
                     default:
-                        flag.setOpenedToBox(coord);
+                        flag.setOpenedToBox(coord); // открывает клетки вокруг цифр
                         break;
                 }
+        }
+    }
+
+    private void openBoxesAroundZero(Coord coord) {
+        flag.setOpenedToBox(coord);
+        for (Coord around : Ranges.getAroundCoord(coord)) {
+            openBox(around);
         }
     }
 
